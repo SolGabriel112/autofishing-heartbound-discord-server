@@ -39,3 +39,48 @@ for i in range(200):
             print("Button not on screen yet...")
             time.sleep(0.5)
     pressed = False
+try:
+    loc = pyautogui.locateCenterOnScreen("clickme.png", confidence=0.8)
+    if loc:
+        print("Button found at:", loc)
+        pyautogui.moveTo(loc, duration=0.1)
+        time.sleep(0.15)
+        pyautogui.click()
+        print("Clicked!")
+    else:
+        print("Button not found, waiting...")
+        time.sleep(0.5)
+except pyautogui.ImageNotFoundException:
+    print("Button not on screen yet...")
+    time.sleep(0.5)
+
+pyautogui.write(',fishsell')
+try:
+    loc = pyautogui.locateCenterOnScreen("sell1.png", confidence=0.8)
+    if loc:
+        print("Button found at:", loc)
+        pyautogui.moveTo(loc, duration=0.1)
+        time.sleep(0.15)
+        pyautogui.click()
+        print("Clicked!")
+    else:
+        print("Button not found, waiting...")
+        time.sleep(0.5)
+except pyautogui.ImageNotFoundException:
+    print("Button not on screen yet...")
+    time.sleep(0.5)
+
+try:
+    loc = pyautogui.locateCenterOnScreen("sell2.png", confidence=0.8)
+    if loc:
+        print("Button found at:", loc)
+        pyautogui.moveTo(loc, duration=0.1)
+        time.sleep(0.15)
+        pyautogui.click()
+        print("Clicked!")
+    else:
+        print("Button not found, waiting...")
+        time.sleep(0.5)
+except pyautogui.ImageNotFoundException:
+    print("Button not on screen yet...")
+    time.sleep(0.5)
