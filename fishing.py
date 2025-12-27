@@ -8,10 +8,12 @@ pyautogui.FAILSAFE = True
 
 print("Waiting for button...")
 pressed = False
+entered_selling = False
+sold = False
 
 
 for i in range(200):
-    while pressed != True:
+    while pressed == False:
         try:
             loc = pyautogui.locateCenterOnScreen("clickme.png", confidence=0.8)
             if loc:
@@ -84,3 +86,38 @@ try:
 except pyautogui.ImageNotFoundException:
     print("Button not on screen yet...")
     time.sleep(0.5)
+
+pyautogui.write(',fishsell')
+pyautogui.press('enter')
+while entered_selling == False:
+    try:
+        loc = pyautogui.locateCenterOnScreen("sell1.png", confidence=0.9)
+        if loc:
+            print("Button found at:", loc)
+            pyautogui.moveTo(loc, duration=0.1)
+            time.sleep(0.15)
+            pyautogui.click()
+            print("Clicked!")
+            entered_selling = True
+        else:
+            print("Button not found, waiting...")
+            time.sleep(0.5)
+    except pyautogui.ImageNotFoundException:
+        print("Button not on screen yet...")
+        time.sleep(0.5)
+while sold == False:
+    try:
+        loc = pyautogui.locateCenterOnScreen("sell2.png", confidence=0.8)
+        if loc:
+            print("Button found at:", loc)
+            pyautogui.moveTo(loc, duration=0.1)
+            time.sleep(0.15)
+            pyautogui.click()
+            print("Clicked!")
+            sold = True
+        else:
+            print("Button not found, waiting...")
+            time.sleep(0.5)
+    except pyautogui.ImageNotFoundException:
+        print("Button not on screen yet...")
+        time.sleep(0.5)
