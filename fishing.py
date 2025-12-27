@@ -15,15 +15,15 @@ sold = False
 for i in range(200):
     while pressed == False:
         try:
-            loc = pyautogui.locateCenterOnScreen("clickme.png", confidence=0.8)
+            loc = pyautogui.locateCenterOnScreen("clickme.png", confidence=0.83)
             if loc:
                 print("Button found at:", loc)
                 pyautogui.moveTo(loc, duration=0.1)
-                time.sleep(0.15)
+                time.sleep(0.16)
                 pyautogui.click()
                 print("Clicked!")
                 print("fished",i+1,"times")
-                time.sleep(1.4)
+                time.sleep(1.7)
                 pyautogui.scroll(-100)  # scroll down 10 "clicks"
                 time.sleep(0.17)
                 pyautogui.write(',')
@@ -41,51 +41,23 @@ for i in range(200):
             print("Button not on screen yet...")
             time.sleep(0.5)
     pressed = False
-try:
-    loc = pyautogui.locateCenterOnScreen("clickme.png", confidence=0.8)
-    if loc:
-        print("Button found at:", loc)
-        pyautogui.moveTo(loc, duration=0.1)
-        time.sleep(0.15)
-        pyautogui.click()
-        print("Clicked!")
-    else:
-        print("Button not found, waiting...")
+pressed = False 
+while pressed == False:
+    try:
+        loc = pyautogui.locateCenterOnScreen("clickme.png", confidence=0.8)
+        if loc:
+            print("Button found at:", loc)
+            pyautogui.moveTo(loc, duration=0.1)
+            time.sleep(0.15)
+            pyautogui.click()
+            print("Clicked!")
+            pressed = True
+        else:
+            print("Button not found, waiting...")
+            time.sleep(0.5)
+    except pyautogui.ImageNotFoundException:
+        print("Button not on screen yet...")
         time.sleep(0.5)
-except pyautogui.ImageNotFoundException:
-    print("Button not on screen yet...")
-    time.sleep(0.5)
-
-pyautogui.write(',fishsell')
-try:
-    loc = pyautogui.locateCenterOnScreen("sell1.png", confidence=0.8)
-    if loc:
-        print("Button found at:", loc)
-        pyautogui.moveTo(loc, duration=0.1)
-        time.sleep(0.15)
-        pyautogui.click()
-        print("Clicked!")
-    else:
-        print("Button not found, waiting...")
-        time.sleep(0.5)
-except pyautogui.ImageNotFoundException:
-    print("Button not on screen yet...")
-    time.sleep(0.5)
-
-try:
-    loc = pyautogui.locateCenterOnScreen("sell2.png", confidence=0.8)
-    if loc:
-        print("Button found at:", loc)
-        pyautogui.moveTo(loc, duration=0.1)
-        time.sleep(0.15)
-        pyautogui.click()
-        print("Clicked!")
-    else:
-        print("Button not found, waiting...")
-        time.sleep(0.5)
-except pyautogui.ImageNotFoundException:
-    print("Button not on screen yet...")
-    time.sleep(0.5)
 
 pyautogui.write(',fishsell')
 pyautogui.press('enter')
